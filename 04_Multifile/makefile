@@ -1,4 +1,3 @@
-LIBS_FILES = const.o fun.o
 GENERATES = liboutput_static.a liboutput.so prog prog-a prog-so
 TRASH = *.o *~ o.*
 CFLAGS = -fPIC -Wall
@@ -20,6 +19,9 @@ prog-a: prog.o liboutput_static.a
 
 prog-so: prog.o liboutput.so
 	cc $(CFLAGS) -L. $< -loutput -o $@
+
+test:	prog prog-a prog-so
+	export LD_LIBRARY_PATH=$(CURR_DIR)
 
 clean: rm -f $(TRASH)
 
