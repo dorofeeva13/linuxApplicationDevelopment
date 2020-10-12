@@ -1,5 +1,5 @@
 GENERATES = liboutput_static.a liboutput.so prog prog-a prog-so
-TRASH = *.o *~ o.*
+TRASH = *.o *~ o.* param* test*
 CFLAGS = -fPIC -Wall
 
 all: prog prog-a prog-so
