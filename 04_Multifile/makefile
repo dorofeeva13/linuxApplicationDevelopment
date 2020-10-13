@@ -20,20 +20,20 @@ liboutput.so:	fun.o const.o
 prog-so: prog.o liboutput.so
 	cc $(CFLAGS) -L. $< -loutput -o $@
 
-test:	prog prog-a prog-so
+test: prog prog-a prog-so
 	./prog > test1
 	./prog-a > test2
-	LD_LIBRARY_PATH=`pwd`./prog-so > test3
-
+	LD_LIBRARY_PATH=`pwd` ./prog-so > test3
+	cmp test1 test2
+	cmp test2 test3
 	./prog param1 > test11
 	./prog-a param1 > test22
-	LD_LIBRARY_PATH=`pwd`./prog-so param1 > test33
+	LD_LIBRARY_PATH=`pwd` ./prog-so param1 > test33
 	cmp test11 test22
 	cmp test22 test33
-
 	./prog param1 param2 > test111
 	./prog-a param1 param2 > test222
-	LD_LIBRARY_PATH=`pwd`./prog-so param1 param2 > test333
+	LD_LIBRARY_PATH=`pwd` ./prog-so param1 param2 > test333	
 	cmp test111 test222
 	cmp test222 test333
 
