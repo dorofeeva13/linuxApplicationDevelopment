@@ -23,38 +23,38 @@ int main(int argc, char **argv)
 
   char inRE[MAXSTR], inSTR[MAXSTR];
 
-	int errnum, i, rc;
+  int errnum, i, rc;
 
-	initscr();
-	cbreak();
-	printw("Input:");
-	refresh();
-	int half = (COLS - 2 * DX) / 2;
+  initscr();
+  cbreak();
+  printw("Input:");
+  refresh();
+  int half = (COLS - 2 * DX) / 2;
 
-	winRE = newwin(ONLELINE, half, DX, DX);
-	winSTR = newwin(ONLELINE, half, DX, DX + half);
-	winLOG = newwin(LINES - ONLELINE - DX * 2, COLS - 2 * DX, DX + ONLELINE, DX);
+  winRE = newwin(ONLELINE, half, DX, DX);
+  winSTR = newwin(ONLELINE, half, DX, DX + half);
+  winLOG = newwin(LINES - ONLELINE - DX * 2, COLS - 2 * DX, DX + ONLELINE, DX);
 
-	keypad(winRE, TRUE);
-	keypad(winSTR, TRUE);
-	scrollok(winLOG, TRUE);
+  keypad(winRE, TRUE);
+  keypad(winSTR, TRUE);
+  scrollok(winLOG, TRUE);
 
-	do {
-		werase(winRE);
-		box(winRE, 0, 0);
-		mvwgetnstr(winRE, 1, 1, inRE, MAXSTR);
-		werase(winSTR);
-		box(winSTR, 0, 0);
-		mvwgetnstr(winSTR, 1, 1, inSTR, MAXSTR);
+  do {
+    werase(winRE);
+    box(winRE, 0, 0);
+    mvwgetnstr(winRE, 1, 1, inRE, MAXSTR);
+    werase(winSTR);
+    box(winSTR, 0, 0);
+    mvwgetnstr(winSTR, 1, 1, inSTR, MAXSTR);
 
-		wprintw(winLOG, " \'%s\': \'%s\'\n", inRE, inSTR);
+    wprintw(winLOG, " \'%s\': \'%s\'\n", inRE, inSTR);
 
-	  PCRE2_SPTR pattern = (PCRE2_SPTR)inRE;
-	  PCRE2_SPTR subject = (PCRE2_SPTR)inSTR; 
+    PCRE2_SPTR pattern = (PCRE2_SPTR)inRE;
+    PCRE2_SPTR subject = (PCRE2_SPTR)inSTR; 
 
-	  PCRE2_SIZE erroffs;
-	  PCRE2_SIZE *ovector;
-	  PCRE2_SIZE subject_length = (PCRE2_SIZE)strlen((char *)subject);
+    PCRE2_SIZE erroffs;
+    PCRE2_SIZE *ovector;
+    PCRE2_SIZE subject_length = (PCRE2_SIZE)strlen((char *)subject);
 
     pcre2_code *re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, PCRE_OPTIONS, &errnum, &erroffs, NULL);
 
@@ -70,10 +70,10 @@ int main(int argc, char **argv)
     if (rc < 0) {
       switch(rc) {
       case PCRE2_ERROR_NOMATCH:
-        wprintw(winLOG, "	No match\n");
+        wprintw(winLOG, " No match\n");
         break;
       default:
-        wprintw(winLOG, "	Matching error %d\n", rc);
+        wprintw(winLOG, " Matching error %d\n", rc);
         break;
       }
     }
@@ -89,9 +89,9 @@ int main(int argc, char **argv)
 
     box(winLOG, 0, 0);
     wrefresh(winLOG);
-	} while (*inRE);
+  } while (*inRE);
 
-	endwin();
+  endwin();
   
   return 0;
 }
