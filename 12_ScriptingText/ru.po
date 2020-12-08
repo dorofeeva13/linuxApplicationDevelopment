@@ -1,0 +1,51 @@
+# Guess number
+# Copyright (C) 2020
+# This file is distributed under the same license as the package.
+# <github.com/dorofeeva13>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: guess_number 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-15 18:59+0000\n"
+"PO-Revision-Date: 2020-11-15 18:21+0000\n"
+"Last-Translator: Alla Dorofeeva <github.com/dorofeeva13>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: main.c:9
+msgid "Make a number from 1 to 100\n"
+msgstr "Придумай число от 1 до 100\n"
+
+#: main.c:13
+msgid "Is your number bigger than %d ?\n"
+msgstr "Ваше число больше, чем %d ?\n"
+
+#: main.c:14
+msgid "If yes - write 'y', else -'n':\n"
+msgstr "Если да - введи 'д', иначе -'н':\n"
+
+#: main.c:16
+msgid "y"
+msgstr "д"
+
+#: main.c:16
+msgid "n"
+msgstr "н"
+
+#: main.c:19
+msgid "y"
+msgstr "д"
+
+#: main.c:17
+msgid "Wrong answer, please try again!\n"
+msgstr "Неправильный ответ, пожалуйста, введи ответ еще раз!\n"
+
+#: main.c:27
+msgid "Wished number is %d\n"
+msgstr "Загаданное число - %d\n"
